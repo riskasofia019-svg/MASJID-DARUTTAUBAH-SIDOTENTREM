@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Daruttaubah Sidotentrem - Website Resmi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Top Bar Info -->
+    <div class="bg-emerald-900 text-emerald-100 text-xs sm:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-location-dot mr-1 text-amber-500"></i> Desa Sidotentrem, Kec. Bangilan, Kab. Tuban</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-envelope mr-1 text-amber-500"></i> info@daruttaubah-sidotentrem.or.id</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span id="current-date" class="font-medium"></span>
+                <div class="flex gap-2">
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-emerald-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Brand / Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-emerald-700 text-white rounded-xl flex items-center justify-center shadow-md">
+                        <i class="fa-solid fa-mosque text-2xl"></i>
+                    </div>
+                    <div>
+                        <a href="#" class="font-bold text-lg sm:text-xl text-emerald-900 tracking-tight leading-tight block">Masjid Daruttaubah</a>
+                        <span class="text-xs text-slate-500 font-medium">Desa Sidotentrem, Bangilan - Tuban</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-6 font-medium text-slate-600">
+                    <a href="#beranda" class="hover:text-emerald-700 transition">Beranda</a>
+                    <a href="#profil" class="hover:text-emerald-700 transition">Profil</a>
+                    <a href="#jadwal" class="hover:text-emerald-700 transition">Jadwal Sholat</a>
+                    <a href="#kegiatan" class="hover:text-emerald-700 transition">Kegiatan</a>
+                    <a href="#donasi" class="hover:text-emerald-700 transition">Donasi</a>
+                    <a href="#galeri" class="hover:text-emerald-700 transition">Galeri</a>
+                    <a href="#kontak" class="hover:text-emerald-700 transition">Kontak</a>
+                </nav>
+
+                <!-- Action CTA -->
+                <div class="hidden md:block">
+                    <a href="#donasi" class="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow-sm transition flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-hand-holding-heart"></i> Infaq Online
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 text-slate-700 hover:text-emerald-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#beranda" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium border-b border-slate-100">Beranda</a>
+            <a href="#profil" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium border-b border-slate-100">Profil</a>
+            <a href="#jadwal" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium border-b border-slate-100">Jadwal Sholat</a>
+            <a href="#kegiatan" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium border-b border-slate-100">Kegiatan</a>
+            <a href="#donasi" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium border-b border-slate-100">Donasi</a>
+            <a href="#galeri" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium border-b border-slate-100">Galeri</a>
+            <a href="#kontak" class="block py-2 text-slate-700 hover:text-emerald-700 font-medium">Kontak</a>
+            <a href="#donasi" class="w-full text-center block bg-amber-500 text-white py-3 rounded-xl font-semibold mt-3">Infaq Online</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative bg-emerald-900 text-white overflow-hidden py-20 lg:py-28">
+        <!-- Background Overlay Image with Gradient -->
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/064e3b/ffffff?text=Masjid+Daruttaubah');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/90 to-transparent"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-emerald-800/80 border border-emerald-600 text-amber-400 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide">
+                        <i class="fa-solid fa-star-and-crescent"></i> Pusat Dakwah & Pembinaan Umat
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+                        Selamat Datang di <span class="text-amber-400">Masjid Daruttaubah</span> Sidotentrem
+                    </h1>
+                    <p class="text-base sm:text-lg text-emerald-100 max-w-2xl leading-relaxed">
+                        Menjadi pusat ibadah, pendidikan Islam, dan pemberdayaan sosial masyarakat yang berlandaskan Al-Qur'an dan Sunnah untuk menggapai keridhaan Allah SWT.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#jadwal" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg transition flex items-center gap-2">
+                            <i class="fa-solid fa-clock"></i> Jadwal Sholat Hari Ini
+                        </a>
+                        <a href="#profil" class="bg-emerald-800/80 hover:bg-emerald-800 text-white border border-emerald-600 px-6 py-3.5 rounded-xl font-semibold transition flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info"></i> Kenali Kami
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Prayer Countdown Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 rounded-3xl shadow-2xl text-white">
+                        <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                            <div>
+                                <h3 class="text-lg font-bold">Waktu Sholat Tuban</h3>
+                                <p class="text-xs text-emerald-200">Bangilan, Kab. Tuban & Sekitarnya</p>
+                            </div>
+                            <span class="bg-amber-500 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Hari Ini</span>
+                        </div>
+                        <div class="space-y-3" id="mini-prayer-times">
+                            <!-- Populated by JS -->
+                            <div class="flex justify-between items-center py-2 px-3 bg-white/5 rounded-xl">
+                                <span class="font-medium text-emerald-200">Subuh</span>
+                                <span class="font-bold text-amber-400">04:15 WIB</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 px-3 bg-white/5 rounded-xl">
+                                <span class="font-medium text-emerald-200">Dzuhur</span>
+                                <span class="font-bold text-amber-400">11:35 WIB</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 px-3 bg-white/5 rounded-xl">
+                                <span class="font-medium text-emerald-200">Ashar</span>
+                                <span class="font-bold text-amber-400">14:55 WIB</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 px-3 bg-white/5 rounded-xl">
+                                <span class="font-medium text-emerald-200">Maghrib</span>
+                                <span class="font-bold text-amber-400">17:42 WIB</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 px-3 bg-white/5 rounded-xl">
+                                <span class="font-medium text-emerald-200">Isya</span>
+                                <span class="font-bold text-amber-400">18:52 WIB</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#jadwal" class="text-xs text-amber-300 hover:underline font-medium flex items-center justify-center gap-1">
+                                Lihat Jadwal Lengkap Bulanan <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Banner -->
+    <section class="bg-emerald-800 text-white py-10 shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 bg-emerald-900/40 rounded-2xl border border-emerald-700/50">
+                    <div class="text-3xl sm:text-4xl font-bold text-amber-400 mb-1">1995</div>
+                    <div class="text-xs sm:text-sm text-emerald-200">Tahun Berdiri</div>
+                </div>
+                <div class="p-4 bg-emerald-900/40 rounded-2xl border border-emerald-700/50">
+                    <div class="text-3xl sm:text-4xl font-bold text-amber-400 mb-1">500+</div>
+                    <div class="text-xs sm:text-sm text-emerald-200">Jamaah Aktif</div>
+                </div>
+                <div class="p-4 bg-emerald-900/40 rounded-2xl border border-emerald-700/50">
+                    <div class="text-3xl sm:text-4xl font-bold text-amber-400 mb-1">12+</div>
+                    <div class="text-xs sm:text-sm text-emerald-200">Program Kegiatan</div>
+                </div>
+                <div class="p-4 bg-emerald-900/40 rounded-2xl border border-emerald-700/50">
+                    <div class="text-3xl sm:text-4xl font-bold text-amber-400 mb-1">150m²</div>
+                    <div class="text-xs sm:text-sm text-emerald-200">Luas Bangunan</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil & Visi Misi -->
+    <section id="profil" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-semibold text-sm uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Profil Masjid</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Tentang Masjid Daruttaubah Sidotentrem</h2>
+                <p class="text-slate-600">Berdiri di Desa Sidotentrem, Kecamatan Bangilan, Kabupaten Tuban, Masjid Daruttaubah terus berkhidmat sebagai tempat ibadah sekaligus pusat pencerahan spiritual masyarakat desa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-900">Sejarah Singkat & Perkembangan</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Masjid Daruttaubah bermula dari mushola tempat pengajian warga setempat di Desa Sidotentrem, Bangilan. Dengan gotong royong dan kebersamaan masyarakat Tuban yang religius, bangunan ini terus berkembang menjadi masjid yang kokoh dan makmur.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Kini Masjid Daruttaubah tidak hanya menjadi tempat ibadah sholat lima waktu dan sholat Jumat, namun juga menjadi wadah pendidikan Al-Qur'an anak-anak serta kegiatan sosial kemasyarakatan di wilayah Bangilan, Tuban.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+                            <div class="text-emerald-700 font-bold text-lg mb-1 flex items-center gap-2">
+                                <i class="fa-solid fa-eye text-amber-500"></i> Visi Kami
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                Menjadi masjid yang makmur, mandiri, dan teladan dalam membina masyarakat yang bertaqwa, berilmu, dan berakhlakul karimah.
+                            </p>
+                        </div>
+                        <div class="p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+                            <div class="text-emerald-700 font-bold text-lg mb-1 flex items-center gap-2">
+                                <i class="fa-solid fa-bullseye text-amber-500"></i> Misi Kami
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                Meningkatkan kualitas ibadah, menyelenggarakan TPQ berkualitas, memakmurkan majelis ta'lim, dan peduli kesejahteraan dhuafa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Card Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://placehold.co/600x400/047857/ffffff?text=Interior+Masjid" alt="Interior Masjid" class="rounded-2xl shadow-md w-full h-48 sm:h-64 object-cover">
+                        <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Kajian+Rutin" alt="Kajian Rutin" class="rounded-2xl shadow-md w-full h-32 sm:h-40 object-cover">
+                    </div>
+                    <div class="space-y-4 pt-6">
+                        <img src="https://placehold.co/600x400/065f46/ffffff?text=TPQ+Daruttaubah" alt="TPQ Anak" class="rounded-2xl shadow-md w-full h-32 sm:h-40 object-cover">
+                        <img src="https://placehold.co/600x400/064e3b/ffffff?text=Kegiatan+Sosial" alt="Kegiatan Sosial" class="rounded-2xl shadow-md w-full h-48 sm:h-64 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jadwal Sholat Section -->
+    <section id="jadwal" class="py-20 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-semibold text-sm uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Waktu Sholat</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Jadwal Sholat Kabupaten Tuban</h2>
+                <p class="text-slate-600">Selalu dirikan sholat tepat pada waktunya. Berikut adalah jadwal sholat harian untuk wilayah Bangilan, Tuban dan sekitarnya.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+                <div class="bg-emerald-900 text-white p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Jadwal Sholat Bulan Ini</h3>
+                        <p class="text-emerald-200 text-sm" id="full-date-display">Rabu, 29 Oktober 2026</p>
+                    </div>
+                    <div class="bg-emerald-800 px-4 py-2 rounded-xl border border-emerald-700 text-center">
+                        <span class="text-xs text-emerald-300 block">Status Adzan</span>
+                        <span class="font-bold text-amber-400 text-sm"><i class="fa-solid fa-circle text-[8px] text-green-400 mr-1 animate-pulse"></i> Tepat Waktu</span>
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="prayer-cards-grid">
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-cloud-sun text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Imsak</h4>
+                                    <span class="text-xs text-slate-500">Menjelang Subuh</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-emerald-800">04:05</span>
+                        </div>
+
+                        <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-2xl flex items-center justify-between shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-emerald-700 text-white rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-sun text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-emerald-900">Subuh</h4>
+                                    <span class="text-xs text-emerald-600">Sholat Wajib</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-emerald-900">04:15</span>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-cloud text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Terbit</h4>
+                                    <span class="text-xs text-slate-500">Matahari Terbit</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-slate-800">05:30</span>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-sun text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Dzuhur</h4>
+                                    <span class="text-xs text-slate-500">Sholat Wajib</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-slate-800">11:35</span>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-sun text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Ashar</h4>
+                                    <span class="text-xs text-slate-500">Sholat Wajib</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-slate-800">14:55</span>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-orange-100 text-orange-800 rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-moon text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Maghrib</h4>
+                                    <span class="text-xs text-slate-500">Sholat Wajib</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-slate-800">17:42</span>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex items-center justify-between sm:col-span-2 lg:col-span-3">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-indigo-100 text-indigo-800 rounded-xl flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-star text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Isya</h4>
+                                    <span class="text-xs text-slate-500">Sholat Wajib</span>
+                                </div>
+                            </div>
+                            <span class="font-bold text-lg text-slate-800">18:52</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kegiatan & Program -->
+    <section id="kegiatan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-semibold text-sm uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Program & Agenda</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Kegiatan Rutin Masjid Daruttaubah</h2>
+                <p class="text-slate-600">Berbagai kegiatan keagamaan, pendidikan, dan sosial yang terbuka untuk seluruh masyarakat Sidotentrem dan sekitarnya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition group">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-emerald-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-book-quran"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">TPQ & Madrasah Diniyah</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Pendidikan Al-Qur'an metode Tilawati untuk anak-anak usia TK & SD setiap sore hari Senin s.d. Jumat pukul 15.30 - 17.00 WIB.
+                    </p>
+                    <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold text-sm">
+                        Setiap Hari Kerja <i class="fa-solid fa-clock ml-1"></i>
+                    </span>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition group">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-amber-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Kajian Rutin & Majelis Ta'lim</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Kajian tafsir Al-Qur'an dan fiqh muamalah bersama ustadz tamu terkemuka setiap malam Jumat ba'da Maghrib & Ahad pagi.
+                    </p>
+                    <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold text-sm">
+                        Malam Jumat & Ahad Pagi <i class="fa-solid fa-calendar ml-1"></i>
+                    </span>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition group">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-emerald-700 group-hover:text-white transition">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Zakat, Infaq & Sedekah (ZIS)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        Layanan penerimaan dan penyaluran Zakat fitrah, mal, serta Infaq harian untuk membantu fakir miskin dan dhuafa di Sidotentrem.
+                    </p>
+                    <span class="inline-flex items-center gap-1 text-emerald-700 font-semibold text-sm">
+                        Setiap Hari di Sekretariat <i class="fa-solid fa-circle-check ml-1"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donasi & Kas Masjid -->
+    <section id="donasi" class="py-20 bg-emerald-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/047857/ffffff?text=Donasi');"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="bg-emerald-800 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-700 uppercase tracking-widest">Infaq & Wakaf</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Mari Beramal Jariyah untuk Pembangunan & Operasional Masjid</h2>
+                    <p class="text-emerald-100 text-sm sm:text-base leading-relaxed">
+                        "Barangsiapa membangun masjid karena Allah, maka Allah akan membangunkan baginya rumah di surga." (HR. Bukhari & Muslim).
+                    </p>
+                    <div class="space-y-4 pt-2">
+                        <div class="bg-white/10 border border-white/20 p-4 rounded-2xl flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-emerald-300 block">Bank Syariah Indonesia (BSI)</span>
+                                <span class="font-mono text-lg font-bold text-amber-400">7123-4567-89</span>
+                                <span class="text-xs text-white/80 block">a.n. Masjid Daruttaubah Sidotentrem</span>
+                            </div>
+                            <button onclick="copyToClipboard('7123456789')" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition">
+                                <i class="fa-solid fa-copy mr-1"></i> Salin No. Rek
+                            </button>
+                        </div>
+                        <div class="bg-white/10 border border-white/20 p-4 rounded-2xl flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-emerald-300 block">Bank Mandiri</span>
+                                <span class="font-mono text-lg font-bold text-amber-400">142-00-9876543-2</span>
+                                <span class="text-xs text-white/80 block">a.n. Kas Masjid Daruttaubah</span>
+                            </div>
+                            <button onclick="copyToClipboard('1420098765432')" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition">
+                                <i class="fa-solid fa-copy mr-1"></i> Salin No. Rek
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QRIS Box / Confirmation -->
+                <div class="bg-white text-slate-800 p-8 rounded-3xl shadow-2xl text-center max-w-md mx-auto w-full">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Scan QRIS Infaq</h3>
+                    <p class="text-xs text-slate-500 mb-6">Dapat dipindai melalui BCA, Mandiri, BSI, GoPay, OVO, Dana, dll.</p>
+                    <div class="bg-slate-100 p-4 rounded-2xl inline-block border border-slate-200 mb-6">
+                        <img src="https://placehold.co/220x220/ffffff/000000?text=QRIS+Daruttaubah" alt="QRIS Code" class="rounded-xl mx-auto w-48 h-48 object-cover">
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Konfirmasi transfer infaq setelah melakukan donasi:</p>
+                    <a href="https://wa.me/6281234567890?text=Assalamu'alaikum,%20saya%20ingin%20konfirmasi%20donasi%20untuk%20Masjid%20Daruttaubah" target="_blank" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 px-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Konfirmasi via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Foto -->
+    <section id="galeri" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-semibold text-sm uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Dokumentasi</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Galeri Kegiatan Masjid</h2>
+                <p class="text-slate-600">Potret kebersamaan jamaah dan ragam aktivitas di Masjid Daruttaubah Sidotentrem.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-3xl shadow-md border border-slate-200">
+                    <img src="https://placehold.co/600x400/047857/ffffff?text=Sholat+Jumat+Berjamaah" alt="Sholat Jumat" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6">
+                        <span class="text-white font-semibold text-sm">Sholat Jumat Berjamaah</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl shadow-md border border-slate-200">
+                    <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Santunan+Anak+Yatim" alt="Santunan Yatim" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6">
+                        <span class="text-white font-semibold text-sm">Santunan Anak Yatim & Dhuafa</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl shadow-md border border-slate-200">
+                    <img src="https://placehold.co/600x400/065f46/ffffff?text=Peringatan+Maulid+Nabi" alt="Maulid Nabi" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6">
+                        <span class="text-white font-semibold text-sm">Peringatan Hari Besar Islam (PHBI)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Lokasi -->
+    <section id="kontak" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-700 font-semibold text-sm uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Hubungi Kami</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Lokasi & Sekretariat Masjid</h2>
+                <p class="text-slate-600">Silakan kunjungi sekretariat kami atau kirimkan pesan untuk pertanyaan seputar kegiatan masjid.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Info & Form -->
+                <div class="space-y-6">
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Alamat Lengkap</h4>
+                                <p class="text-sm text-slate-600">Desa Sidotentrem, Kecamatan Bangilan, Kabupaten Tuban, Jawa Timur 62364</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Telepon / WhatsApp</h4>
+                                <p class="text-sm text-slate-600">+62 812-3456-7890 (Takmir Masjid)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Email Resmi</h4>
+                                <p class="text-sm text-slate-600">info@daruttaubah-sidotentrem.or.id</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
+                        <h4 class="font-bold text-slate-900 text-lg">Kirim Pesan / Pertanyaan</h4>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-emerald-600" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Nomor WhatsApp / Email</label>
+                            <input type="text" id="contact-info" required class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-emerald-600" placeholder="08xxxxxxxxxx">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Pesan</label>
+                            <textarea id="message" rows="3" required class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-emerald-600" placeholder="Tuliskan pesan atau pertanyaan Anda..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 rounded-xl font-semibold transition text-sm">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Map Simulation / Google Maps Embed -->
+                <div class="rounded-3xl overflow-hidden shadow-md border border-slate-200 h-[450px] lg:h-auto">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31665.412356!2d111.716!3d-7.018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e779f4175782977%3A0x5027a76e356cfc0!2sSidotentrem%2C%20Kec.%20Bangilan%2C%20Kabupaten%20Tuban%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Peta Lokasi Sidotentrem Bangilan Tuban">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-white py-12 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-emerald-700 text-white rounded-xl flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <span class="font-bold text-lg">Masjid Daruttaubah</span>
+                    </div>
+                    <p class="text-xs text-emerald-300 max-w-sm leading-relaxed">
+                        Pusat peradaban Islam dan pemberdayaan jamaah di Desa Sidotentrem, Kec. Bangilan, Kab. Tuban. Bersama memakmurkan masjid untuk menggapai ridha Allah SWT.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-amber-400 mb-4 text-sm uppercase tracking-wider">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-xs text-emerald-200">
+                        <li><a href="#beranda" class="hover:text-amber-400 transition">Beranda</a></li>
+                        <li><a href="#profil" class="hover:text-amber-400 transition">Profil Pengurus</a></li>
+                        <li><a href="#jadwal" class="hover:text-amber-400 transition">Jadwal Sholat</a></li>
+                        <li><a href="#kegiatan" class="hover:text-amber-400 transition">Agenda & Kegiatan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-amber-400 mb-4 text-sm uppercase tracking-wider">Jam Operasional</h4>
+                    <ul class="space-y-2 text-xs text-emerald-200">
+                        <li>Masjid Buka 24 Jam</li>
+                        <li>Sekretariat: 08.00 - 20.00 WIB</li>
+                        <li>TPQ: Senin - Jumat (15.30 - 17.00)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-emerald-900/60 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-emerald-300">
+                <p>&copy; 2026 Masjid Daruttaubah Sidotentrem, Bangilan - Tuban. Hak Cipta Dilindungi.</p>
+                <p class="mt-2 sm:mt-0">Dibuat dengan penuh cinta untuk kemakmuran umat.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Notification Modal (No Alert) -->
+    <div id="notification-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full mx-4 shadow-2xl text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900" id="modal-title">Berhasil!</h3>
+            <p class="text-sm text-slate-600" id="modal-desc">Pesan Anda telah berhasil dikirimkan kepada takmir masjid.</p>
+            <button onclick="closeModal()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 rounded-xl font-semibold transition text-sm">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Display current date in top bar
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date();
+        document.getElementById('current-date').innerText = today.toLocaleDateString('id-ID', options);
+        document.getElementById('full-date-display').innerText = today.toLocaleDateString('id-ID', options);
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Copy to clipboard helper
+        function copyToClipboard(text) {
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            showModal("Berhasil Disalin!", "Nomor rekening berhasil disalin ke clipboard.");
+        }
+
+        // Contact Form Submit Handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            showModal("Pesan Terkirim!", `Terima kasih ${name}, pesan Anda telah diterima oleh pengurus Masjid Daruttaubah.`);
+            document.getElementById('contact-form').reset();
+        }
+
+        // Modal Handler
+        function showModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('notification-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('notification-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
